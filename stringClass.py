@@ -1,0 +1,17 @@
+sampleString = "Hello World"
+
+print(len(sampleString))
+print(sampleString.lower())
+print(sampleString.upper())
+print(sampleString.capitalize())
+print(sampleString.count("l"))
+print(sampleString.find("World"))
+print(sampleString.replace("World", "universe"))
+print(sampleString.startswith("hello"))
+print(sampleString.endswith("World"))
+print(sampleString.split(" "))
+words = sampleString.split(" ")
+print("-".join(words))
+print(sampleString.isalnum())
+print(sampleString.isalpha())
+print(sampleString.isnumeric())
