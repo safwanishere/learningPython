@@ -21,7 +21,7 @@ class Stack:
             print("stack is empty")
 
     def size(self):
-        return len(self.items)
+        return len(self.items)   
     
 stack = Stack()
 stack.push(5)
