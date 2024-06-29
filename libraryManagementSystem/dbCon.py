@@ -15,6 +15,7 @@ genre = 'fiction'
 available = True
 
 #user information variables
+
 userID = 4
 name = 'Khaja Viqhar Uddin'
 mobileNumber = 7674023587
@@ -65,7 +66,3 @@ def alterUserDetails(columnName, beforeValue, afterValue):
 # removeUser(2)
 # alterBookDetails(2, 'AUTHOR', 'G. Orwell')
 # alterUserDetails('NAME', 'Mohammed Safwan', 'Mohammed Kaif')
-
-
-con.commit()
-con.close()
