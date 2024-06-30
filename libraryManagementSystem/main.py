@@ -1,5 +1,7 @@
 from dbCon import *
 
-insertUser('safwan', 1278589905)
+searchResult = searchUser("safwan")
+print(searchResult)
+
 con.commit()
 con.close()

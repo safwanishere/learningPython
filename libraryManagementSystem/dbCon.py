@@ -36,6 +36,18 @@ def removeBook(bookID: int):
 def alterBookDetails(bookID, columnName, newValue):
     cur.execute(f"UPDATE BOOKS SET {columnName} = '{newValue}' WHERE ID = '{bookID}';")
 
+def searchBook(prompt):
+    matches = []
+    cur.execute("SELECT TITLE FROM BOOKS;")
+    result = cur.fetchall()
+    for i in result:
+        book = i[0]
+        if prompt.lower() in book.lower():
+            cur.execute(f"SELECT * FROM BOOKS WHERE TITLE = '{book}';")
+            res = cur.fetchall()
+            matches.append(res[0])
+    return matches
+
 # -------------------------------------------------------
 
 # ------------------- USERS TABLE -----------------------
@@ -56,6 +68,17 @@ def alterUserDetails(columnName, beforeValue, afterValue):
     if columnName == "MOBILENUMBER":
         cur.execute(f"UPDATE USERS SET {columnName} = {afterValue} WHERE {columnName} = {beforeValue};")
     
+def searchUser(prompt):
+    matches = []
+    cur.execute("SELECT NAME FROM USERS;")
+    result = cur.fetchall()
+    for i in result:
+        user = i[0]
+        if prompt.lower() in user.lower():
+            cur.execute(f"SELECT * FROM USERS WHERE NAME = '{user}';")
+            res = cur.fetchall()
+            matches.append(res[0])
+    return matches
 
 # -------------------------------------------------------
 
@@ -66,3 +89,5 @@ def alterUserDetails(columnName, beforeValue, afterValue):
 # removeUser(2)
 # alterBookDetails(2, 'AUTHOR', 'G. Orwell')
 # alterUserDetails('NAME', 'Mohammed Safwan', 'Mohammed Kaif')
+# searchBook("apollo")
+# searchUser("safwan")
