@@ -15,7 +15,6 @@ genre = 'fiction'
 available = True
 
 #user information variables
-
 userID = 4
 name = 'Khaja Viqhar Uddin'
 mobileNumber = 7674023587
@@ -81,6 +80,25 @@ def searchUser(prompt):
     return matches
 
 # -------------------------------------------------------
+
+# book issuing function
+#def issueBook(bookID, userID):
+
+bookID = 1
+userID = 1
+cur.execute(f"SELECT AVAILABLE FROM BOOKS WHERE ID = '{bookID}';")
+res = cur.fetchall()[0][0]
+if res == 'True':
+    cur.execute(f"UPDATE BOOKS SET AVAILABLE = 'False' WHERE ID = '{bookID}';")
+    con.commit()
+    cur.execute(f"SELECT BORROWEDBOOKS FROM USERS WHERE USERID = '{userID}';")
+    borrowedBooks = cur.fetchall()[0][0]
+    cur.execute(f"SELECT TITLE FROM BOOKS WHERE ID = '{bookID}';")
+    bookTitle = cur.fetchall()[0][0]
+    
+    print(borrowedBooks, bookTitle)
+else:
+    print("Book is currently not available to borrow.")
 
 # function calls
 # insertBook('Peer-e-Kamil', 'Umera Ahmed', 'Novel')
